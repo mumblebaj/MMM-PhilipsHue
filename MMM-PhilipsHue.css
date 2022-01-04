@@ -1,0 +1,11 @@
+.MMM-PhilipsHue .centered {
+    text-align: center;
+}
+
+.MMM-PhilipsHue .lights-all-on{
+   color: yellow
+}
+
+.MMM-PhilipsHue .lights-partial-on{
+   color: khaki
+}
