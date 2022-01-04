@@ -3,10 +3,10 @@ Module.register("MMM-PhilipsHue", {
         bridgeip: "",
         userid: "",
         colour: false,
-        refreshTime: 60 * 10000,
+        updateInterval: 60 * 10000,
         animationSpeed: 2 * 1000,
         lightsOrGroups: "groups",
-        showOOnlyOn: false,
+        showOnlyOn: false,
         showLabel: true,
         hideSpecificGroups: false,
         hideGroupsWithString: "hgrp"
