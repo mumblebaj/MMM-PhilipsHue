@@ -5,7 +5,7 @@ Module.register("MMM-PhilipsHue", {
         colour: false,
         updateInterval: 60 * 10000,
         animationSpeed: 2 * 1000,
-        lightsOrGroups: "groups",
+        lightsOrGroups: "lights",
         showOnlyOn: false,
         showLabel: true,
         hideSpecificGroups: false,
@@ -43,15 +43,17 @@ Module.register("MMM-PhilipsHue", {
         }, this.updateInterval);
     },
 
-    getDom: function() {
+    getDom: function () {
         var wrapper = document.createElement("div");
+        //alert("http://" + this.config.bridgeip + "/api/" + this.config.userid + "/" + this.config.lightsorgroups);
 
         if (this.result) {
+
             var table = document.createElement("table");
             table.classList.add("small", "table", "align-left");
 
             if (this.config.showLabel)
-            table.appendChild(this.createLabelRow());
+              table.appendChild(this.createLabelRow());
 
             var lamps = Object.keys(this.result);
 
@@ -59,21 +61,23 @@ Module.register("MMM-PhilipsHue", {
                 var groupName = this.result[lamps[i]].name;
                 console.debug(groupName, groupName.includes('hgrp'));
 
-                if (this.config.showOOnlyOn) {
+                if (this.config.showOnlyOn) {
                     if (this.config.hideSpecificGroups && !groupName.includes(this.config.hideGroupsWithString)) {
-                        if(this.result[lamps[i]].state.all_on || this.result[lamps[i]].state.any_on) {
-                            domAction(this.result, lamps[i], this.config);
+                        if (this.result[lamps[i]].state.all_on || this.result[lamps[i]].state.any_on) {
+                            domAction(this.result,lamps[i],this.config);
                         }
                     } else if (!this.config.hideSpecificGroups) {
-                        domAction(this.result, lamps[i], this.config);
+                        domAction(this.result,lamps[i],this.config);
                     }
                 } else {
                     if (this.config.hideSpecificGroups && !groupName.includes(this.config.hideGroupsWithString)) {
-                        domAction(this.result, lamps[i], this.config);
+                        domAction(this.result,lamps[i],this.config);
                     } else if (!this.config.hideSpecificGroups) {
-                        domAction(this.result, lamps[i], this.config);
+                        domAction(this.result,lamps[i],this.config);
                     }
                 }
+
+
             }
 
             function domAction(result, lamp, config) {
@@ -135,6 +139,7 @@ Module.register("MMM-PhilipsHue", {
     },
 
     getData: function() {
+        console.log(this.config)
         if(this.config.lightsOrGroups === "lights") {
             this.sendSocketNotification("huelights", this.config)
         } else if (this.config.lightsOrGroups === "groups") {
