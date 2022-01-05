@@ -15,7 +15,7 @@ module.exports = NodeHelper.create ({
         }
 
         var result = await response.json()
-        console.log(result)
+        //console.log(result)
         this.sendSocketNotification("lightsorgroups", result)
     },
 
@@ -28,16 +28,16 @@ module.exports = NodeHelper.create ({
         }
 
         var result = await response.json()
-        console.log(result)
+        //console.log(result)
         this.sendSocketNotification("lightsorgroups", result)
     },
 
     socketNotificationReceived: function(notification, payload) {
         if (notification === "huelights") {
-            console.log("Payload Received: " + payload)
+            //console.log("Payload Received: " + payload)
             this.getLights(payload)
         } else if (notification === "huegroups") {
-            console.log("Payload Received: " + payload)
+            //console.log("Payload Received: " + payload)
             this.getGroups(payload)
         }
     }
