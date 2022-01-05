@@ -7,7 +7,7 @@ module.exports = NodeHelper.create ({
     },
 
     getLights: async function(payload) {
-        var url = "http://" + this.payload.bridgeip + "/api/" + this.payload.userid + "/" + this.payload.lightsOrGroups;
+        var url = "http://" + payload.bridgeip + "/api/" + payload.userid + "/" + payload.lightsOrGroups;
         var response = await fetch(url)
         if (!response.status == 200) {
             console.error(`Error retrieving data: ${response.statusCode} ${response.statusText}`)
@@ -16,11 +16,11 @@ module.exports = NodeHelper.create ({
 
         var result = await response.json()
         console.log(result)
-        this.sendSocketNotification("lightsorgroups", this.result)
+        this.sendSocketNotification("lightsorgroups", result)
     },
 
     getGroups: async function(payload) {
-        var url = "http://" + this.payload.bridgeip + "/api/" + this.payload.userid + "/" + this.payload.lightsOrGroups;
+        var url = "http://" + payload.bridgeip + "/api/" + payload.userid + "/" + payload.lightsOrGroups;
         var response = await fetch(url)
         if (!response.status == 200) {
             console.error(`Error retrieving data: ${response.statusCode} ${response.statusText}`)
@@ -29,7 +29,7 @@ module.exports = NodeHelper.create ({
 
         var result = await response.json()
         console.log(result)
-        this.sendSocketNotification("lightsorgroups", this.result)
+        this.sendSocketNotification("lightsorgroups", result)
     },
 
     socketNotificationReceived: function(notification, payload) {
