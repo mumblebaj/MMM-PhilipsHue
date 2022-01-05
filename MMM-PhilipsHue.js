@@ -12,12 +12,8 @@ Module.register("MMM-PhilipsHue", {
         hideGroupsWithString: "hgrp"
     },
 
-    getScripts: function() {
-
-    },
-
     getStyles: function() {
-        return ["font-awesome.css", "MMM-PhilpsHue.css"];
+        return ["font-awesome.css", "MMM-PhilipsHue.css"];
     },
 
     getTranslations: function() {
@@ -149,10 +145,10 @@ Module.register("MMM-PhilipsHue", {
 
     socketNotificationReceived: function(notification, payload) {
         var self = this
-        if(notification === "lightsandgroups") {
+        if(notification === "lightsorgroups") {
             this.result = payload
             this.updateDom();
         }
-    },
+    }
 
-});
+})
