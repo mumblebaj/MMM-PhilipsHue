@@ -55,7 +55,7 @@ Module.register("MMM-PhilipsHue", {
 
             for (var i = 0; i < lamps.length; i++) {
                 var groupName = this.result[lamps[i]].name;
-                console.debug(groupName, groupName.includes('hgrp'));
+                //console.debug(groupName, groupName.includes('hgrp'));
 
                 if (this.config.showOnlyOn) {
                     if (this.config.hideSpecificGroups && !groupName.includes(this.config.hideGroupsWithString)) {
@@ -79,7 +79,7 @@ Module.register("MMM-PhilipsHue", {
             function domAction(result, lamp, config) {
                 var row = document.createElement("tr");
                 var room = document.createElement("td");
-                console.debug(result[lamp]);
+                //console.debug(result[lamp]);
                 room.innerHTML = result[lamp].name;
                 row.appendChild(room);
                 var lightsallLabel = document.createElement("td");
@@ -135,7 +135,7 @@ Module.register("MMM-PhilipsHue", {
     },
 
     getData: function() {
-        console.log(this.config)
+        //console.log(this.config)
         if(this.config.lightsOrGroups === "lights") {
             this.sendSocketNotification("huelights", this.config)
         } else if (this.config.lightsOrGroups === "groups") {
