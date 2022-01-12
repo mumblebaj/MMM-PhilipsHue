@@ -21,7 +21,7 @@ Module.register("MMM-PhilipsHue", {
             'en': 'translations/en.json',
             'id': 'translations/id.json',
             'sv': 'translations/sc.json',
-            'fr': 'translations.fr.json',
+            'fr': 'translations/fr.json',
         };
     },
 
