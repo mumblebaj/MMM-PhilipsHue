@@ -35,7 +35,7 @@ The following properties can be configured:
 | `colour` | This boolean determines whether the icons should be displayed in colour when the lights are on in a given room. <br>**Type:** `boolean` |
 | `refreshTime` | How often should the lamp states refreshed  <br>**Type:** `number` <br>**Default:** 60 * 10000 |
 | `animationSpeed` | Animation Speed  <br>**Type:** `number` <br>**Default:** 2 * 1000 |
-| `lightsOrGroups` | Should the module show groups or lights <br>**Type:** `string` <br>**Default:** "groups" <br> `lights` do **NOT** work currently|
+| `lightsOrGroups` | Should the module show groups or lights <br>**Type:** `string` <br>**Default:** "groups"|
 | `showOnlyOn` | If set to true the module shows only the lights which are on <br>**Type:** `boolean` | false |
 | `hideSpecificGroups` | Ignore some groups by a given string (requires hideGroupsWithString option) <br>**Type:** `boolean` <br>**Default:** false |
 | `hideGroupsWithString` | Ignore some groups which including this string (requires hideSpecificGroups option) <br>**Type:** `string` |

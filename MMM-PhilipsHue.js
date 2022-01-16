@@ -56,22 +56,23 @@ Module.register("MMM-PhilipsHue", {
             for (var i = 0; i < lamps.length; i++) {
                 var groupName = this.result[lamps[i]].name;
                 //console.debug(groupName, groupName.includes('hgrp'));
-
-                if (this.config.showOnlyOn) {
-                    if (this.config.hideSpecificGroups && !groupName.includes(this.config.hideGroupsWithString)) {
-                        if (this.result[lamps[i]].state.all_on || this.result[lamps[i]].state.any_on) {
+                if (this.config.lightsOrGroups === "groups") {
+                    if (this.config.showOnlyOn) {
+                        if (this.config.hideSpecificGroups && !groupName.includes(this.config.hideGroupsWithString)) {
+                            if (this.result[lamps[i]].state.all_on || this.result[lamps[i]].state.any_on) {
+                                domAction(this.result,lamps[i],this.config);
+                            }
+                        } else if (!this.config.hideSpecificGroups) {
                             domAction(this.result,lamps[i],this.config);
                         }
-                    } else if (!this.config.hideSpecificGroups) {
-                        domAction(this.result,lamps[i],this.config);
+                    } else {
+                        if (this.config.hideSpecificGroups && !groupName.includes(this.config.hideGroupsWithString)) {
+                            domAction(this.result,lamps[i],this.config);
+                        } else if (!this.config.hideSpecificGroups) {
+                            domAction(this.result,lamps[i],this.config);
+                        }
                     }
-                } else {
-                    if (this.config.hideSpecificGroups && !groupName.includes(this.config.hideGroupsWithString)) {
-                        domAction(this.result,lamps[i],this.config);
-                    } else if (!this.config.hideSpecificGroups) {
-                        domAction(this.result,lamps[i],this.config);
-                    }
-                }
+            } else { domAction(this.result, lamps[i], this.config) }
 
 
             }
@@ -86,10 +87,10 @@ Module.register("MMM-PhilipsHue", {
                 lightsallLabel.classList.add("centered");
 
                 var lightstatus = document.createElement("i");
-                lightstatus.classList.add("fa", result[lamp].state.all_on ? "fa-lightbulb-o" : (result[lamp].state.any_on ? "fa-adjust" : "fa-times"));
+                lightstatus.classList.add("fa", result[lamp].state.all_on  || result[lamp].state.on ? "fa-lightbulb-o" : (result[lamp].state.any_on  || result[lamp].state.on ? "fa-adjust" : "fa-times"));
                 if (config.colour) {
 
-                    if (result[lamp].state.all_on) {
+                    if (result[lamp].state.all_on  || result[lamp].state.on) {
                         lightstatus.classList.add("lights-all-on")
                     }
                     else {
