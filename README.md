@@ -8,6 +8,10 @@ Navigate into your MagicMirror's modules folder and execute <br>
 `git clone https://github.com/mumblebaj/MMM-PhilipsHue.git`<br>
 `cd ~/MagicMirror/modules/MMM-PhilipsHue/`<br> 
 `npm install`
+
+## Dependencies
+- node-fetch 2.6.1
+
 ## Using the module
 
 To use this module, add it to the modules array in the `config/config.js` file:
