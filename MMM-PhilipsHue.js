@@ -72,10 +72,14 @@ Module.register("MMM-PhilipsHue", {
                             domAction(this.result,lamps[i],this.config);
                         }
                     }
-            } else { domAction(this.result, lamps[i], this.config) }
-
-
+            } else { 
+                if(this.config.showOnlyOn) {
+                    if(this.result[lamps[i]].state.on) {
+                        domAction(this.result, lamps[i], this.config) 
+                    }
+                }
             }
+        }
 
             function domAction(result, lamp, config) {
                 var row = document.createElement("tr");
