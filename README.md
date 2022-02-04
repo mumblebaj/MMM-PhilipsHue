@@ -10,7 +10,7 @@ Navigate into your MagicMirror's modules folder and execute <br>
 `npm install`
 
 ## Dependencies
-- node-fetch 2.6.1
+- node-fetch@2.6.1
 
 ## Using the module
 
