@@ -3,6 +3,8 @@ The `MMM-PhilipsHue` module is a third party module for MagicMirror. It is a sim
 
 Module was forked from MMM-Hue by MitchSS and updated to replace XmlHttpRequest with node-fetch.
 
+[![license](https://img.shields.io/github/license/mashape/apistatus.svg)](LICENSE)
+
 ## Installing the Module
 Navigate into your MagicMirror's modules folder and execute <br>
 `git clone https://github.com/mumblebaj/MMM-PhilipsHue.git`<br>
