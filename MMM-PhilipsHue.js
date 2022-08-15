@@ -39,6 +39,22 @@ Module.register("MMM-PhilipsHue", {
         }, this.updateInterval);
     },
 
+    stop: function () {
+        Log.info('Stopping module ' + this.name);
+      },
+    
+      resume: function () {
+        Log.info('Resuming module ' + this.name);
+        Log.debug('with config: ' + JSON.stringify(this.config));
+        this.suspend = false;
+        this.updateDom()
+      },
+    
+      suspend: function () {
+        Log.info('Suspending module ' + this.name);
+        this.suspend = true;
+      },
+
     getDom: function () {
         var wrapper = document.createElement("div");
         //alert("http://" + this.config.bridgeip + "/api/" + this.config.userid + "/" + this.config.lightsorgroups);
