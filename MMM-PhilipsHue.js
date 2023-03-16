@@ -32,6 +32,8 @@ Module.register("MMM-PhilipsHue", {
         this.initialLoadDelay = 0;
 
         var result = false;
+        suspended = false;
+
         this.getData();
 
         setInterval(() => {
@@ -46,13 +48,13 @@ Module.register("MMM-PhilipsHue", {
       resume: function () {
         Log.info('Resuming module ' + this.name);
         Log.debug('with config: ' + JSON.stringify(this.config));
-        this.suspend = false;
+        this.suspended = false;
         this.updateDom()
       },
     
       suspend: function () {
         Log.info('Suspending module ' + this.name);
-        this.suspend = true;
+        this.suspended = true;
       },
 
     getDom: function () {
