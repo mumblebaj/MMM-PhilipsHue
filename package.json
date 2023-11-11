@@ -1,11 +1,20 @@
 {
   "name": "mmm-philipshue",
-  "version": "1.2.0",
-  "description": "Philips Hue Lights module for Magic Mirror",
+  "version": "1.2.1",
+  "description": "Philips Hue Lights module for MagicMirror²",
   "main": "MMM-PhilipsHue.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mumblebaj/MMM-PhilipsHue.git"
+  },
+  "keywords": [
+    "MagicMirror²",
+    "PhilipsHue",
+    "Smart Lights"
+  ],
   "author": "mumblebaj",
   "license": "ISC",
   "dependencies": {
