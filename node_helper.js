@@ -2,6 +2,8 @@ var NodeHelper = require('node_helper')
 var fetch = require('node-fetch')
 
 module.exports = NodeHelper.create ({
+    requiresVersion: '2.22.0',
+    
     start: function() {
         console.log('Starting node_helper for module: ' + this.name)
     },

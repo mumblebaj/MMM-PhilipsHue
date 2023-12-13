@@ -5,6 +5,8 @@ Module was forked from MMM-Hue by MitchSS and updated to replace XmlHttpRequest 
 
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg)](LICENSE)
 
+![Example](images/screenshot.png)
+
 ## Support
 If you like my module you can support my work by giving me a star ir buy me a coffee.
 
