@@ -51,5 +51,5 @@ The following properties can be configured:
 | `lightsOrGroups` | Should the module show groups or lights <br>**Type:** `string` <br>**Default:** "groups"|
 | `showOnlyOn` | If set to true the module shows only the lights which are on <br>**Type:** `boolean` | false |
 | `hideSpecificGroups` | Ignore some groups by a given string (requires hideGroupsWithString option) <br>**Type:** `boolean` <br>**Default:** false |
-| `hideGroupsWithString` | Ignore some groups which including this string (requires hideSpecificGroups option) <br>**Type:** `string` |
+| `hideGroupsWithString` | Ignore an array of groups (requires hideSpecificGroups option to be set as true) <br>Sample array: `["Kitchen", "Den"]` <br>**Type:** `string` |
 | `showLabel` | Show header label? <br>**Type:** `boolean` <br>**Default:** true |

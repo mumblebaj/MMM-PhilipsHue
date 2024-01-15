@@ -76,7 +76,7 @@ Module.register("MMM-PhilipsHue", {
                 //console.debug(groupName, groupName.includes('hgrp'));
                 if (this.config.lightsOrGroups === "groups") {
                     if (this.config.showOnlyOn) {
-                        if (this.config.hideSpecificGroups && !groupName.includes(this.config.hideGroupsWithString)) {
+                        if (this.config.hideSpecificGroups && !this.config.hideGroupsWithString.includes(groupName)) {
                             if (this.result[lamps[i]].state.all_on || this.result[lamps[i]].state.any_on) {
                                 domAction(this.result,lamps[i],this.config);
                             }
@@ -84,7 +84,7 @@ Module.register("MMM-PhilipsHue", {
                             domAction(this.result,lamps[i],this.config);
                         }
                     } else {
-                        if (this.config.hideSpecificGroups && !groupName.includes(this.config.hideGroupsWithString)) {
+                        if (this.config.hideSpecificGroups && !this.config.hideGroupsWithString.includes(groupName)) {
                             domAction(this.result,lamps[i],this.config);
                         } else if (!this.config.hideSpecificGroups) {
                             domAction(this.result,lamps[i],this.config);
