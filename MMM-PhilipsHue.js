@@ -3,7 +3,7 @@ Module.register("MMM-PhilipsHue", {
         bridgeip: "",
         userid: "",
         colour: false,
-        updateInterval: 60 * 10000,
+        refreshTime: 60 * 10000,
         animationSpeed: 2 * 1000,
         lightsOrGroups: "lights",
         showOnlyOn: false,
@@ -27,7 +27,7 @@ Module.register("MMM-PhilipsHue", {
 
     start: function() {
         this.lightsorgroups = this.config.lightsOrGroups;
-        this.updateInterval = this.config.updateInterval;
+        this.updateInterval = this.config.refreshTime;
         this.animationSpeed = this.config.animationSpeed;
         this.initialLoadDelay = 0;
 
