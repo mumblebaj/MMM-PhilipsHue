@@ -1,6 +1,6 @@
 {
   "name": "mmm-philipshue",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "description": "Philips Hue Lights module for MagicMirror²",
   "main": "MMM-PhilipsHue.js",
   "scripts": {

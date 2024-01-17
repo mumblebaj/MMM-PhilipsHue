@@ -18,6 +18,9 @@ Navigate into your MagicMirror's modules folder and execute <br>
 `cd ~/MagicMirror/modules/MMM-PhilipsHue/`<br> 
 `npm install`
 
+## Updates v1.2.3
+- Updated the module to exclude an array of lights when either `groups` and `lights` are selected as `lightsOrGroups`
+
 ## Dependencies
 - node-fetch@2.6.1
 

@@ -12,11 +12,11 @@ Module.register("MMM-PhilipsHue", {
         hideGroupsWithString: "hgrp"
     },
 
-    getStyles: function() {
+    getStyles: function () {
         return ["font-awesome.css", "MMM-PhilipsHue.css"];
     },
 
-    getTranslations: function() {
+    getTranslations: function () {
         return {
             'en': 'translations/en.json',
             'id': 'translations/id.json',
@@ -25,7 +25,7 @@ Module.register("MMM-PhilipsHue", {
         };
     },
 
-    start: function() {
+    start: function () {
         this.lightsorgroups = this.config.lightsOrGroups;
         this.updateInterval = this.config.refreshTime;
         this.animationSpeed = this.config.animationSpeed;
@@ -43,19 +43,19 @@ Module.register("MMM-PhilipsHue", {
 
     stop: function () {
         Log.info('Stopping module ' + this.name);
-      },
-    
-      resume: function () {
+    },
+
+    resume: function () {
         Log.info('Resuming module ' + this.name);
         Log.debug('with config: ' + JSON.stringify(this.config));
         this.suspended = false;
         this.updateDom()
-      },
-    
-      suspend: function () {
+    },
+
+    suspend: function () {
         Log.info('Suspending module ' + this.name);
         this.suspended = true;
-      },
+    },
 
     getDom: function () {
         var wrapper = document.createElement("div");
@@ -67,7 +67,7 @@ Module.register("MMM-PhilipsHue", {
             table.classList.add("small", "table", "align-left");
 
             if (this.config.showLabel)
-              table.appendChild(this.createLabelRow());
+                table.appendChild(this.createLabelRow());
 
             var lamps = Object.keys(this.result);
 
@@ -78,26 +78,34 @@ Module.register("MMM-PhilipsHue", {
                     if (this.config.showOnlyOn) {
                         if (this.config.hideSpecificGroups && !this.config.hideGroupsWithString.includes(groupName)) {
                             if (this.result[lamps[i]].state.all_on || this.result[lamps[i]].state.any_on) {
-                                domAction(this.result,lamps[i],this.config);
+                                domAction(this.result, lamps[i], this.config);
                             }
                         } else if (!this.config.hideSpecificGroups) {
-                            domAction(this.result,lamps[i],this.config);
+                            domAction(this.result, lamps[i], this.config);
                         }
                     } else {
                         if (this.config.hideSpecificGroups && !this.config.hideGroupsWithString.includes(groupName)) {
-                            domAction(this.result,lamps[i],this.config);
+                            domAction(this.result, lamps[i], this.config);
                         } else if (!this.config.hideSpecificGroups) {
-                            domAction(this.result,lamps[i],this.config);
+                            domAction(this.result, lamps[i], this.config);
                         }
                     }
-            } else { 
-                if(this.config.showOnlyOn) {
-                    if(this.result[lamps[i]].state.on) {
-                        domAction(this.result, lamps[i], this.config) 
+                } else {
+                    if (this.config.showOnlyOn) {
+                        if (this.config.hideSpecificGroups && !this.config.hideGroupsWithString.includes(groupName)) {
+                            if (this.result[lamps[i]].state.on) {
+                                domAction(this.result, lamps[i], this.config)
+                            }
+                        }
+                    } else {
+                        if (this.config.hideSpecificGroups && !this.config.hideGroupsWithString.includes(groupName)) {
+                            domAction(this.result, lamps[i], this.config);
+                        } else if (!this.config.hideSpecificGroups) {
+                            domAction(this.result, lamps[i], this.config);
+                        }
                     }
                 }
             }
-        }
 
             function domAction(result, lamp, config) {
                 var row = document.createElement("tr");
@@ -109,10 +117,10 @@ Module.register("MMM-PhilipsHue", {
                 lightsallLabel.classList.add("centered");
 
                 var lightstatus = document.createElement("i");
-                lightstatus.classList.add("fa", result[lamp].state.all_on  || result[lamp].state.on ? "fa-lightbulb-o" : (result[lamp].state.any_on  || result[lamp].state.on ? "fa-adjust" : "fa-times"));
+                lightstatus.classList.add("fa", result[lamp].state.all_on || result[lamp].state.on ? "fa-lightbulb-o" : (result[lamp].state.any_on || result[lamp].state.on ? "fa-adjust" : "fa-times"));
                 if (config.colour) {
 
-                    if (result[lamp].state.all_on  || result[lamp].state.on) {
+                    if (result[lamp].state.all_on || result[lamp].state.on) {
                         lightstatus.classList.add("lights-all-on")
                     }
                     else {
@@ -157,18 +165,18 @@ Module.register("MMM-PhilipsHue", {
         return labelRow;
     },
 
-    getData: function() {
+    getData: function () {
         //console.log(this.config)
-        if(this.config.lightsOrGroups === "lights") {
+        if (this.config.lightsOrGroups === "lights") {
             this.sendSocketNotification("huelights", this.config)
         } else if (this.config.lightsOrGroups === "groups") {
             this.sendSocketNotification("huegroups", this.config)
         }
     },
 
-    socketNotificationReceived: function(notification, payload) {
+    socketNotificationReceived: function (notification, payload) {
         var self = this
-        if(notification === "lightsorgroups") {
+        if (notification === "lightsorgroups") {
             this.result = payload
             this.updateDom();
         }
